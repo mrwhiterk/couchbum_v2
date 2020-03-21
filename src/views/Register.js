@@ -32,9 +32,23 @@ class Register extends React.Component {
   };
 
   handleChange = e => {
-    console.log("hit");
     this.setState({ [e.target.name]: e.target.value });
   };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    let data = {
+      email: this.state.email,
+      username: this.state.username,
+      password: this.state.password,
+      confirmPassword: this.state.confirmPassword
+    }
+
+    console.log(data)
+    
+
+  }
 
   render() {
     return (
@@ -67,9 +81,9 @@ class Register extends React.Component {
       ))} */}
         {/* </Row> */}
         {this.state.isAuth.toString()}
-        <Form>
+        <Form onSubmit={this.handleSubmit} md={{ size: 6 }}>
           <Row form>
-            <Col md={{ size: 6, offset: 3 }} className="form-group">
+            <Col md={{ size: 8, offset: 0 }} className="form-group">
               <FormInput
                 value={this.state.email}
                 placeholder="email address"
@@ -80,7 +94,7 @@ class Register extends React.Component {
               />
               {/* <FormFeedback valid>The first name looks good!</FormFeedback> */}
             </Col>
-            <Col md={{ size: 6, offset: 3 }} className="form-group">
+            <Col md={{ size: 8, offset: 0 }} className="form-group">
               <FormInput
                 value={this.state.username}
                 placeholder="username"
@@ -91,7 +105,7 @@ class Register extends React.Component {
               />
               {/* <FormFeedback valid>The last name looks good!</FormFeedback> */}
             </Col>
-            <Col md={{ size: 6, offset: 3 }} className="form-group">
+            <Col md={{ size: 8, offset: 0 }} className="form-group">
               <FormInput
                 value={this.state.password}
                 placeholder="password"
@@ -102,7 +116,7 @@ class Register extends React.Component {
               />
               {/* <FormFeedback>The username is taken.</FormFeedback> */}
             </Col>
-            <Col md={{ size: 6, offset: 3 }} className="form-group">
+            <Col md={{ size: 8, offset: 0 }} className="form-group">
               <FormInput
                 value={this.state.confirmPassword}
                 placeholder="confirm password"
@@ -116,8 +130,8 @@ class Register extends React.Component {
           </Row>
           <Row>
             <Col>
-              <Button theme="primary" md={{ size: 6 }}>
-                Fizz
+              <Button variant="primary" size="lg">
+                Register
               </Button>
             </Col>
           </Row>
