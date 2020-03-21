@@ -9,6 +9,9 @@ import UsersByDevice from "./../components/blog/UsersByDevice";
 import NewDraft from "./../components/blog/NewDraft";
 import Discussions from "./../components/blog/Discussions";
 import TopReferrals from "./../components/common/TopReferrals";
+import { connect } from 'react-redux';
+import { checkTokenAndReturn } from "../axios";
+import * as actions from '../store/actions'
 
 import {
   Row,
@@ -24,7 +27,6 @@ import {
 
 class Register extends React.Component {
   state = {
-    isAuth: false,
     email: "",
     username: "",
     password: "",
@@ -45,7 +47,8 @@ class Register extends React.Component {
       confirmPassword: this.state.confirmPassword
     }
 
-    console.log(data)
+    // console.log(data)
+    this.props.register(data);
     
 
   }
@@ -80,7 +83,7 @@ class Register extends React.Component {
         </Col>
       ))} */}
         {/* </Row> */}
-        {this.state.isAuth.toString()}
+        {this.props.isAuth.toString()}
         <Form onSubmit={this.handleSubmit} md={{ size: 6 }}>
           <Row form>
             <Col md={{ size: 8, offset: 0 }} className="form-group">
@@ -141,4 +144,12 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+const mapStateToProps = state => ({
+  isAuth: state.authReducer.isAuth
+});
+
+const mapDispatchToProps = dispatch => ({
+  register: (data) => dispatch(actions.authActions.Register(data))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
