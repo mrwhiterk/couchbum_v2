@@ -26,7 +26,7 @@ import {
   FormSelect
 } from "shards-react";
 
-class Register extends React.Component {
+class Login extends React.Component {
   state = {
     email: "",
     username: "",
@@ -42,32 +42,24 @@ class Register extends React.Component {
     e.preventDefault();
 
     let data = {
-      email: this.state.email,
       username: this.state.username,
-      password: this.state.password,
-      confirmPassword: this.state.confirmPassword
+      password: this.state.password
     };
 
-    // console.log(data)
     try {
-      await this.props.register(data);
+      await this.props.login(data);
       this.setState({
-        email: "",
         username: "",
-        password: "",
-        confirmPassword: ""
+        password: ""
       });
-      
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
-
-
   render() {
     if (this.props.isAuth) {
-      return <Redirect to="/blog-overview" />
+      return <Redirect to="/blog-overview" />;
     }
     return (
       <Container fluid className="main-content-container px-4">
@@ -75,7 +67,7 @@ class Register extends React.Component {
         <Row noGutters className="page-header py-4">
           <PageTitle
             title="Welcome To CouchBum"
-            subtitle="Register"
+            subtitle="Login"
             className="text-sm-left mb-3"
           />
         </Row>
@@ -103,17 +95,6 @@ class Register extends React.Component {
           <Row form>
             <Col md={{ size: 8, offset: 0 }} className="form-group">
               <FormInput
-                value={this.state.email}
-                placeholder="email address"
-                required
-                name="email"
-                type="email"
-                onChange={this.handleChange}
-              />
-              {/* <FormFeedback valid>The first name looks good!</FormFeedback> */}
-            </Col>
-            <Col md={{ size: 8, offset: 0 }} className="form-group">
-              <FormInput
                 value={this.state.username}
                 placeholder="username"
                 required
@@ -134,22 +115,11 @@ class Register extends React.Component {
               />
               {/* <FormFeedback>The username is taken.</FormFeedback> */}
             </Col>
-            <Col md={{ size: 8, offset: 0 }} className="form-group">
-              <FormInput
-                value={this.state.confirmPassword}
-                placeholder="confirm password"
-                required
-                name="confirmPassword"
-                type="password"
-                onChange={this.handleChange}
-              />
-              {/* <FormFeedback>The username is taken.</FormFeedback> */}
-            </Col>
           </Row>
           <Row>
             <Col>
               <Button variant="primary" size="lg">
-                Register
+                Login
               </Button>
             </Col>
           </Row>
@@ -164,7 +134,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  register: data => dispatch(actions.authActions.Register(data))
+  login: data => dispatch(actions.authActions.Login(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

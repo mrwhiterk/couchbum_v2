@@ -20,7 +20,8 @@ export const checkTokenAndReturn = () => {
     setAuthHeader(null);
     return null;
   } else {
-    setAuthHeader(token);
+    if (token) setAuthHeader(token);
+    else console.log("token error: ", token);
     return tokenData;
   }
 };
@@ -28,6 +29,15 @@ export const checkTokenAndReturn = () => {
 export const register = async data => {
   try {
     let res = await Axios.post("/api/users/register", data);
+    return res;
+  } catch (err) {
+    return err.response;
+  }
+};
+
+export const login = async data => {
+  try {
+    let res = await Axios.post("/api/users/login", data);
     return res;
   } catch (err) {
     return err.response;

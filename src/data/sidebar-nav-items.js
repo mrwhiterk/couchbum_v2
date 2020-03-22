@@ -7,6 +7,12 @@ export default function() {
       htmlAfter: ""
     },
     {
+      title: "Login",
+      to: "/login",
+      htmlBefore: '<i class="material-icons">add</i>',
+      htmlAfter: ""
+    },
+    {
       title: "Listings",
       to: "/blog-overview",
       htmlBefore: '<i class="material-icons">edit</i>',

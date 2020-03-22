@@ -2,12 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { Col } from "shards-react";
-
+import { connect } from "react-redux";
+import * as actions from "../../../store/actions";
 import SidebarMainNavbar from "./SidebarMainNavbar";
 import SidebarSearch from "./SidebarSearch";
 import SidebarNavItems from "./SidebarNavItems";
 
 import { Store } from "../../../flux";
+import { removeAuthSideItems } from "../../../helpers";
 
 class MainSidebar extends React.Component {
   constructor(props) {
@@ -15,7 +17,9 @@ class MainSidebar extends React.Component {
 
     this.state = {
       menuVisible: false,
-      sidebarNavItems: Store.getSidebarItems()
+      sidebarNavItems: this.props.isAuth
+        ? removeAuthSideItems(Store.getSidebarItems())
+        : Store.getSidebarItems()
     };
 
     this.onChange = this.onChange.bind(this);
@@ -33,11 +37,16 @@ class MainSidebar extends React.Component {
     this.setState({
       ...this.state,
       menuVisible: Store.getMenuState(),
-      sidebarNavItems: Store.getSidebarItems()
+      sidebarNavItems: this.props.isAuth
+        ? removeAuthSideItems(Store.getSidebarItems())
+        : Store.getSidebarItems()
     });
   }
 
   render() {
+    console.log(this.state.sidebarNavItems);
+    console.log(this.props.isAuth);
+    
     const classes = classNames(
       "main-sidebar",
       "px-0",
@@ -46,12 +55,7 @@ class MainSidebar extends React.Component {
     );
 
     return (
-      <Col
-        tag="aside"
-        className={classes}
-        lg={{ size: 2 }}
-        md={{ size: 3 }}
-      >
+      <Col tag="aside" className={classes} lg={{ size: 2 }} md={{ size: 3 }}>
         <SidebarMainNavbar hideLogoText={this.props.hideLogoText} />
         <SidebarSearch />
         <SidebarNavItems />
@@ -71,4 +75,8 @@ MainSidebar.defaultProps = {
   hideLogoText: false
 };
 
-export default MainSidebar;
+const mapStateToProps = state => ({
+  isAuth: state.authReducer.isAuth
+});
+
+export default connect(mapStateToProps)(MainSidebar);

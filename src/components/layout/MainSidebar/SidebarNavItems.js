@@ -1,8 +1,11 @@
 import React from "react";
 import { Nav } from "shards-react";
 
+import { connect } from "react-redux";
+import * as actions from "../../../store/actions";
 import SidebarNavItem from "./SidebarNavItem";
 import { Store } from "../../../flux";
+import { removeAuthSideItems } from '../../../helpers'
 
 class SidebarNavItems extends React.Component {
   constructor(props) {
@@ -32,16 +35,39 @@ class SidebarNavItems extends React.Component {
 
   render() {
     const { navItems: items } = this.state;
+
+    let loggedInActions = null;
+
+    let display = null;
+
+    if (this.props.isAuth) {
+      loggedInActions = removeAuthSideItems(this.state.navItems);
+    }
+
+    if (loggedInActions) {
+      display = loggedInActions.map((item, idx) => (
+        <SidebarNavItem key={idx} item={item} />
+      ));
+    } else {
+      display = items.map((item, idx) => (
+        <SidebarNavItem key={idx} item={item} />
+      ));
+    }
+
+    
     return (
       <div className="nav-wrapper">
         <Nav className="nav--no-borders flex-column">
-          {items.map((item, idx) => (
-            <SidebarNavItem key={idx} item={item} />
-          ))}
+          {display}
         </Nav>
       </div>
     )
   }
 }
 
-export default SidebarNavItems;
+
+const mapStateToProps = state => ({
+  isAuth: state.authReducer.isAuth
+});
+
+export default connect(mapStateToProps)(SidebarNavItems);

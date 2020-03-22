@@ -6,7 +6,10 @@ import { DefaultLayout } from "./layouts";
 
 // Route Views
 import BlogOverview from "./views/BlogOverview";
+
 import Register from "./views/Register";
+import Login from "./views/Login";
+
 import UserProfileLite from "./views/UserProfileLite";
 import AddNewPost from "./views/AddNewPost";
 import Errors from "./views/Errors";
@@ -30,6 +33,11 @@ export default [
     path: "/register",
     layout: DefaultLayout,
     component: Register
+  },
+  {
+    path: "/login",
+    layout: DefaultLayout,
+    component: Login
   },
   {
     path: "/user-profile-lite",
