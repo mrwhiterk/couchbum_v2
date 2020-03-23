@@ -44,8 +44,6 @@ class MainSidebar extends React.Component {
   }
 
   render() {
-    console.log(this.state.sidebarNavItems);
-    console.log(this.props.isAuth);
     
     const classes = classNames(
       "main-sidebar",

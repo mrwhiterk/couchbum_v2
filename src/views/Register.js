@@ -48,7 +48,6 @@ class Register extends React.Component {
       confirmPassword: this.state.confirmPassword
     };
 
-    // console.log(data)
     try {
       await this.props.register(data);
       this.setState({

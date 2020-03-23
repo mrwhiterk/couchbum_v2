@@ -28,11 +28,7 @@ export default function() {
       htmlBefore: '<i class="material-icons">note_add</i>',
       to: "/add-new-post"
     },
-    {
-      title: "Blog Posts",
-      htmlBefore: '<i class="material-icons">vertical_split</i>',
-      to: "/blog-posts"
-    },
+    
     {
       title: "Forms & Components",
       htmlBefore: '<i class="material-icons">view_module</i>',

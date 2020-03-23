@@ -1,16 +1,18 @@
-import * as actionTypes from "../actionTypes"
+import * as actionTypes from "../actionTypes";
 
-import { checkTokenAndReturn } from '../../axios'
+import { checkTokenAndReturn } from "../../axios";
 
-const initialState = { isAuth: checkTokenAndReturn() }
+const initialState = { isAuth: checkTokenAndReturn() };
 
 export default function(state = initialState, action) {
-    switch(action.type) {
-        case actionTypes.REGISTER:
-            return { ...state, isAuth: action.payload.user };
-        case actionTypes.LOGIN:
-            return { ...state, isAuth: action.payload.user };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case actionTypes.REGISTER:
+      return { ...state, isAuth: action.payload.user };
+    case actionTypes.LOGIN:
+      return { ...state, isAuth: action.payload.user };
+    case actionTypes.LOGOUT:
+      return { ...state, isAuth: null };
+    default:
+      return state;
+  }
 }

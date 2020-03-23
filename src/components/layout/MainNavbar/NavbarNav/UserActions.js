@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { checkTokenAndReturn } from "../../../../axios";
 import * as actions from "../../../../store/actions";
 
 import {
@@ -24,6 +23,11 @@ class UserActions extends React.Component {
 
     this.toggleUserActions = this.toggleUserActions.bind(this);
   }
+
+  logout = () => {
+    localStorage.removeItem("token");
+    this.props.logout();
+  };
 
   toggleUserActions() {
     this.setState({
@@ -67,7 +71,12 @@ class UserActions extends React.Component {
               <i className="material-icons">&#xE896;</i> Transactions
             </DropdownItem>
             <DropdownItem divider />
-            <DropdownItem tag={Link} to="/" className="text-danger">
+            <DropdownItem
+              tag={Link}
+              to="/"
+              className="text-danger"
+              onClick={this.logout}
+            >
               <i className="material-icons text-danger">&#xE879;</i> Logout
             </DropdownItem>
           </Collapse>
@@ -82,4 +91,8 @@ const mapStateToProps = state => ({
   isAuth: state.authReducer.isAuth
 });
 
-export default connect(mapStateToProps)(UserActions);
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(actions.authActions.Logout())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserActions);
