@@ -9,7 +9,7 @@ import SidebarSearch from "./SidebarSearch";
 import SidebarNavItems from "./SidebarNavItems";
 
 import { Store } from "../../../flux";
-import { removeAuthSideItems } from "../../../helpers";
+import { removeAuthSideItems, removeAddNewPost } from "../../../helpers";
 
 class MainSidebar extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class MainSidebar extends React.Component {
       menuVisible: false,
       sidebarNavItems: this.props.isAuth
         ? removeAuthSideItems(Store.getSidebarItems())
-        : Store.getSidebarItems()
+        : removeAddNewPost(Store.getSidebarItems())
     };
 
     this.onChange = this.onChange.bind(this);
@@ -39,7 +39,7 @@ class MainSidebar extends React.Component {
       menuVisible: Store.getMenuState(),
       sidebarNavItems: this.props.isAuth
         ? removeAuthSideItems(Store.getSidebarItems())
-        : Store.getSidebarItems()
+        : removeAddNewPost(Store.getSidebarItems())
     });
   }
 

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import * as actions from "../../../store/actions";
 import SidebarNavItem from "./SidebarNavItem";
 import { Store } from "../../../flux";
-import { removeAuthSideItems } from '../../../helpers'
+import { removeAuthSideItems, removeAddNewPost } from "../../../helpers";
 
 class SidebarNavItems extends React.Component {
   constructor(props) {
@@ -42,14 +42,14 @@ class SidebarNavItems extends React.Component {
 
     if (this.props.isAuth) {
       loggedInActions = removeAuthSideItems(this.state.navItems);
-    }
+    } 
 
     if (loggedInActions) {
       display = loggedInActions.map((item, idx) => (
         <SidebarNavItem key={idx} item={item} />
       ));
     } else {
-      display = items.map((item, idx) => (
+      display = removeAddNewPost(items).map((item, idx) => (
         <SidebarNavItem key={idx} item={item} />
       ));
     }
