@@ -9,6 +9,7 @@ import UsersByDevice from "./../components/blog/UsersByDevice";
 import NewDraft from "./../components/blog/NewDraft";
 import Discussions from "./../components/blog/Discussions";
 import TopReferrals from "./../components/common/TopReferrals";
+import Checkboxes from "../components/components-overview/Checkboxes";
 import { connect } from "react-redux";
 import { checkTokenAndReturn } from "../axios";
 import * as actions from "../store/actions";
@@ -66,7 +67,7 @@ class Register extends React.Component {
 
   render() {
     if (this.props.isAuth) {
-      return <Redirect to="/blog-overview" />
+      return <Redirect to="/listings" />
     }
     return (
       <Container fluid className="main-content-container px-4">
@@ -152,6 +153,7 @@ class Register extends React.Component {
               </Button>
             </Col>
           </Row>
+          
         </Form>
       </Container>
     );

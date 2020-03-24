@@ -43,3 +43,12 @@ export const login = async data => {
     return err.response;
   }
 };
+
+export const getListings = async () => {
+  try {
+    let res = await Axios.get('/api/listings')
+    return res
+  } catch (error) {
+    return error.response;
+  }
+}

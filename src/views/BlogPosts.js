@@ -34,7 +34,7 @@ class BlogPosts extends React.Component {
         },
         {
           backgroundImage: require("../images/content-management/2.jpeg"),
-          category: "Travel",
+          category: "",
           categoryTheme: "info",
           author: "James Jamerson",
           authorAvatar: require("../images/avatars/2.jpg"),
@@ -76,7 +76,7 @@ class BlogPosts extends React.Component {
           author: "Anna Ken",
           authorAvatar: require("../images/avatars/0.jpg"),
           title:
-            "Attention he extremity unwilling on otherwise cars backwards yet",
+            "Attention he extremely unwilling on otherwise cars backwards yet",
           body:
             "Conviction up partiality as delightful is discovered. Yet jennings resolved disposed exertion you off. Left did fond drew fat head poor jet pan flying over...",
           date: "29 February 2019"

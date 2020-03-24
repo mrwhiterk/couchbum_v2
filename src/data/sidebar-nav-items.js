@@ -14,7 +14,7 @@ export default function() {
     },
     {
       title: "Listings",
-      to: "/blog-overview",
+      to: "/listings",
       htmlBefore: '<i class="material-icons">edit</i>',
       htmlAfter: ""
     },

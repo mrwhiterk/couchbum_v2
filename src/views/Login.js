@@ -59,7 +59,7 @@ class Login extends React.Component {
 
   render() {
     if (this.props.isAuth) {
-      return <Redirect to="/blog-overview" />;
+      return <Redirect to="/listings" />;
     }
     return (
       <Container fluid className="main-content-container px-4">
