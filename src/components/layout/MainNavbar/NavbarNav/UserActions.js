@@ -24,6 +24,17 @@ class UserActions extends React.Component {
     this.toggleUserActions = this.toggleUserActions.bind(this);
   }
 
+  async componentDidMount() {
+    if (this.props.isAuth) {
+      try {
+        await this.props.getUser();
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+  }
+
   logout = () => {
     localStorage.removeItem("token");
     this.props.logout();
@@ -46,13 +57,15 @@ class UserActions extends React.Component {
 
     let { isAuth } = this.props;
 
-    if (isAuth) {
+    if (isAuth && this.props.user) {
+     
       display = (
         <NavItem tag={Dropdown} caret toggle={this.toggleUserActions}>
+          
           <DropdownToggle caret tag={NavLink} className="text-nowrap px-3">
             <img
               className="user-avatar rounded-circle mr-2"
-              src={require("./../../../../images/avatars/guest_user.png")}
+              src={this.props.user.avatar || require("./../../../../images/avatars/guest_user.png")}
               alt="User Avatar"
             />{" "}
             <span className="d-none d-md-inline-block">{isAuth.username}</span>
@@ -88,11 +101,13 @@ class UserActions extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isAuth: state.authReducer.isAuth
+  isAuth: state.authReducer.isAuth,
+  user: state.userReducer.user
 });
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(actions.authActions.Logout())
+  logout: () => dispatch(actions.authActions.Logout()),
+  getUser: () => dispatch(actions.userActions.GetUser())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserActions);

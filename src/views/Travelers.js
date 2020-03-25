@@ -38,7 +38,7 @@ class Travelers extends React.Component {
               className="card-post__image"
               style={{
                 backgroundImage: `url('${post.avatar ||
-                  require("../images/content-management/6.jpeg") }')`
+                  require("../images/avatars/guest_user.png") }')`
               }}
             />
             <CardBody>
@@ -47,7 +47,7 @@ class Travelers extends React.Component {
                   {post.username}
                 </a>
               </h5>
-              <p className="card-text">{post.bio}</p>
+              <p className="card-text">{post.bio || 'Looking for an adventure'}</p>
             </CardBody>
             <CardFooter className="text-muted border-top py-3">
               <span className="d-inline-block">
@@ -58,9 +58,10 @@ class Travelers extends React.Component {
                 {/* <a className="text-fiord-blue" href={post.categoryUrl}>
                   
                 </a> */}
-                <div>Chess</div>
-                <div>Piano</div>
-                <div>Wood work</div>
+                {['chess','piano','wood work'].map(item => {
+                  return <div>{item}</div>
+                })}
+                
               </span>
             </CardFooter>
           </Card>
@@ -75,7 +76,7 @@ class Travelers extends React.Component {
           <PageTitle
             sm="4"
             title="Travelers"
-            subtitle=""
+            subtitle="Good peeps with skills to share"
             className="text-sm-left"
           />
         </Row>

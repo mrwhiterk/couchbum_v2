@@ -69,4 +69,13 @@ export const getTravelers = async () => {
   } catch (error) {
     return error.response;
   }
+};
+
+export const getUser = async () => {
+  try {
+    let res = await Axios.get("/api/users/getUser");
+    return res;
+  } catch (error) {
+    return error.response;
+  }
 }; 

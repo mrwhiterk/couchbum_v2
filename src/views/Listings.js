@@ -53,7 +53,7 @@ class Listings extends React.Component {
         <Row noGutters className="page-header py-4">
           <PageTitle
             title="Listings"
-            subtitle=""
+            subtitle="Somewhere new"
             className="text-sm-left mb-3"
           />
         </Row>
@@ -100,7 +100,7 @@ class Listings extends React.Component {
                       href="#"
                       className="card-post__author-avatar card-post__author-avatar--small"
                       style={{
-                        backgroundImage: `url('${post.authorAvatar ||
+                        backgroundImage: `url('${post.host.avatar ||
                           require("./../images/avatars/guest_user.png")}')`
                       }}
                     >
@@ -300,11 +300,13 @@ Listings.defaultProps = {
 
 const mapStateToProps = state => ({
   listings: state.listingReducer.listings,
-  isAuth: state.authReducer.isAuth
+  isAuth: state.authReducer.isAuth,
+  user: state.userReducer.user
 });
 
 const mapDispatchToProps = dispatch => ({
-  getListings: () => dispatch(actions.listingActions.GetListings())
+  getListings: () => dispatch(actions.listingActions.GetListings()),
+  getUser: () => dispatch(actions.userActions.GetUser())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Listings);
