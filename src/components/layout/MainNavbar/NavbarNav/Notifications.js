@@ -28,7 +28,7 @@ export default class Notifications extends React.Component {
           <div className="nav-link-icon__wrapper">
             <i className="material-icons">&#xE7F4;</i>
             <Badge pill theme="danger">
-              2
+              {/* 2 */}
             </Badge>
           </div>
         </NavLink>
@@ -38,7 +38,10 @@ export default class Notifications extends React.Component {
         >
           <DropdownItem>
             <div className="notification__icon-wrapper">
-              <div className="notification__icon">
+              <div>
+                <span>-- No Notifications --</span>
+              </div>
+              {/* <div className="notification__icon">
                 <i className="material-icons">&#xE6E1;</i>
               </div>
             </div>
@@ -48,10 +51,10 @@ export default class Notifications extends React.Component {
                 Your website’s active users count increased by{" "}
                 <span className="text-success text-semibold">28%</span> in the
                 last week. Great job!
-              </p>
+              </p> */}
             </div>
           </DropdownItem>
-          <DropdownItem>
+          {/* <DropdownItem>
             <div className="notification__icon-wrapper">
               <div className="notification__icon">
                 <i className="material-icons">&#xE8D1;</i>
@@ -65,7 +68,7 @@ export default class Notifications extends React.Component {
                 could have been worse!
               </p>
             </div>
-          </DropdownItem>
+          </DropdownItem> */}
           <DropdownItem className="notification__all text-center">
             View all Notifications
           </DropdownItem>

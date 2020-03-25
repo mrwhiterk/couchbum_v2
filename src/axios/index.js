@@ -52,3 +52,12 @@ export const getListings = async () => {
     return error.response;
   }
 }
+
+export const createListing = async (data) => {
+  try {
+    let res = await Axios.post('/api/listings', data)
+    return res
+  } catch (error) {
+    return error.response;
+  }
+}

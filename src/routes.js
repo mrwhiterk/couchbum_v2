@@ -12,6 +12,7 @@ import Login from "./views/Login";
 
 import UserProfileLite from "./views/UserProfileLite";
 import AddNewPost from "./views/AddNewPost";
+import AddNewListing from "./views/AddNewListing";
 import Errors from "./views/Errors";
 import ComponentsOverview from "./views/ComponentsOverview";
 import Tables from "./views/Tables";
@@ -44,10 +45,15 @@ export default [
     layout: DefaultLayout,
     component: UserProfileLite
   },
+  // {
+  //   path: "/add-new-post",
+  //   layout: DefaultLayout,
+  //   component: AddNewPost
+  // },
   {
-    path: "/add-new-post",
+    path: "/add-new-listing",
     layout: DefaultLayout,
-    component: AddNewPost
+    component: AddNewListing
   },
   // {
   //   path: "/errors",

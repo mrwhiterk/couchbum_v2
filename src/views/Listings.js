@@ -1,6 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Row, Col, Card, Badge, CardBody } from "shards-react";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Badge,
+  CardBody,
+  Button
+} from "shards-react";
 
 import PageTitle from "../components/common/PageTitle";
 import SmallStats from "../components/common/SmallStats";
@@ -23,18 +31,21 @@ class Listings extends React.Component {
     let listings = [];
 
     if (this.props.listings.length) {
-      listings = this.props.listings.map(listItem => ({
-        backgroundImage: require("../images/content-management/5.jpeg"),
-        category: "",
-        categoryTheme: "info",
-        host: listItem.host,
-        authorAvatar: null, //require("../images/avatars/0.jpg"),
-        title: listItem.title,
-        description: listItem.description,
-        images: [],
-        date: listItem.createdAt,
-        available: listItem.available
-      }));
+      listings = this.props.listings.map(listItem => {
+        console.log(listItem.images);
+        return {
+          backgroundImage: require("../images/content-management/5.jpeg"),
+          category: "",
+          categoryTheme: "info",
+          host: listItem.host,
+          authorAvatar: listItem.avatar, //require("../images/avatars/0.jpg"),
+          title: listItem.title,
+          description: listItem.description,
+          images: listItem.images,
+          date: listItem.createdAt,
+          available: listItem.available
+        };
+      });
     }
 
     return (
@@ -74,7 +85,7 @@ class Listings extends React.Component {
               <Card small className="card-post card-post--aside card-post--1">
                 <div
                   className="card-post__image"
-                  style={{ backgroundImage: `url('${post.backgroundImage}')` }}
+                  style={{ backgroundImage: `url('${post.images[0] || post.backgroundImage}')` }}
                 >
                   <Badge
                     pill
@@ -102,8 +113,18 @@ class Listings extends React.Component {
                     </a>
                   </h5>
                   <div className="card-text d-inline-block mb-3">
-                    <div>{post.description}</div>
-                    <div>available: {post.available ? "yes" : "no"}</div>
+                    <div className="mb-3">
+                      {post.description.length > 30
+                        ? post.description.slice(0, 30) + "..."
+                        : post.description}
+                    </div>
+                    <div>
+                      {post.available ? (
+                        <Button variant="success">available</Button>
+                      ) : (
+                        <Button variant="danger">not available</Button>
+                      )}
+                    </div>
                   </div>
                   <br />
                   <div>by {post.host.username}</div>

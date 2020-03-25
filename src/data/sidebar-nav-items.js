@@ -23,10 +23,15 @@ export default function() {
       htmlBefore: '<i class="material-icons">vertical_split</i>',
       to: "/blog-posts"
     },
+    // {
+    //   title: "Add New Post",
+    //   htmlBefore: '<i class="material-icons">note_add</i>',
+    //   to: "/add-new-post"
+    // },
     {
-      title: "Add New Post",
+      title: "Add New Listing",
       htmlBefore: '<i class="material-icons">note_add</i>',
-      to: "/add-new-post"
+      to: "/add-new-listing"
     },
     
     {
