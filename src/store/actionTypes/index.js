@@ -8,3 +8,6 @@ export const LOGOUT = "LOGOUT";
 // listing
 export const GETLISTINGS = "GETLISTINGS";
 export const CREATELISTING = "CREATELISTING";
+
+// user
+export const GETTRAVELERS = "GETTRAVELERS";

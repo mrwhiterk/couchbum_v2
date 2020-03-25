@@ -3,5 +3,5 @@ export const removeAuthSideItems = arr => {
 };
 
 export const removeAddNewPost = arr => {
-  return arr.filter(x => x.title !== "Add New Post");
+  return arr.filter(x => x.title !== "Add New Listing" && x.title !== "User Profile");
 }

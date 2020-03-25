@@ -18,10 +18,15 @@ export default function() {
       htmlBefore: '<i class="material-icons">edit</i>',
       htmlAfter: ""
     },
+    // {
+    //   title: "Blog Posts",
+    //   htmlBefore: '<i class="material-icons">vertical_split</i>',
+    //   to: "/blog-posts"
+    // },
     {
-      title: "Blog Posts",
+      title: "Travelers",
       htmlBefore: '<i class="material-icons">vertical_split</i>',
-      to: "/blog-posts"
+      to: "/travelers"
     },
     // {
     //   title: "Add New Post",

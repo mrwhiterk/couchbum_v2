@@ -32,7 +32,6 @@ class Listings extends React.Component {
 
     if (this.props.listings.length) {
       listings = this.props.listings.map(listItem => {
-        console.log(listItem.images);
         return {
           backgroundImage: require("../images/content-management/5.jpeg"),
           category: "",
@@ -85,7 +84,10 @@ class Listings extends React.Component {
               <Card small className="card-post card-post--aside card-post--1">
                 <div
                   className="card-post__image"
-                  style={{ backgroundImage: `url('${post.images[0] || post.backgroundImage}')` }}
+                  style={{
+                    backgroundImage: `url('${post.images[0] ||
+                      post.backgroundImage}')`
+                  }}
                 >
                   <Badge
                     pill
@@ -120,9 +122,13 @@ class Listings extends React.Component {
                     </div>
                     <div>
                       {post.available ? (
-                        <Button variant="success">available</Button>
+                        <Button size="sm" theme="success" className="mb-2 mr-1">
+                          Apply
+                        </Button>
                       ) : (
-                        <Button variant="danger">not available</Button>
+                        <Button size="sm" theme="danger" className="mb-2 mr-1">
+                          Not Available
+                        </Button>
                       )}
                     </div>
                   </div>

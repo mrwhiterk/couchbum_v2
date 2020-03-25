@@ -61,3 +61,12 @@ export const createListing = async (data) => {
     return error.response;
   }
 }
+
+export const getTravelers = async () => {
+  try {
+    let res = await Axios.get("/api/users/travelers");
+    return res;
+  } catch (error) {
+    return error.response;
+  }
+}; 
