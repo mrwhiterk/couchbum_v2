@@ -12,3 +12,4 @@ export const CREATELISTING = "CREATELISTING";
 // user
 export const GETTRAVELERS = "GETTRAVELERS";
 export const GETUSER = "GETUSER";
+export const REMOVEUSER = "REMOVEUSER";

@@ -11,15 +11,15 @@ import {
 } from "shards-react";
 
 import PageTitle from "../components/common/PageTitle";
-import SmallStats from "../components/common/SmallStats";
-import UsersOverview from "../components/blog/UsersOverview";
-import UsersByDevice from "../components/blog/UsersByDevice";
-import NewDraft from "../components/blog/NewDraft";
-import Discussions from "../components/blog/Discussions";
-import TopReferrals from "../components/common/TopReferrals";
+// import SmallStats from "../components/common/SmallStats";
+// import UsersOverview from "../components/blog/UsersOverview";
+// import UsersByDevice from "../components/blog/UsersByDevice";
+// import NewDraft from "../components/blog/NewDraft";
+// import Discussions from "../components/blog/Discussions";
+// import TopReferrals from "../components/common/TopReferrals";
 import Moment from "react-moment";
 import { connect } from "react-redux";
-import { checkTokenAndReturn } from "../axios";
+// import { checkTokenAndReturn } from "../axios";
 import * as actions from "../store/actions";
 
 class Listings extends React.Component {
@@ -57,27 +57,7 @@ class Listings extends React.Component {
             className="text-sm-left mb-3"
           />
         </Row>
-        {/* // title: {
-  //     type: String,
-  //     required: true
-  //   },
-  //   address: {
-  //     Street: String,
-  //     City: String,
-  //     State: String,
-  //     ZIP: String
-  //   },
-  //   images: [{ type: String }],
-  //   host: {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "User"
-  //   },
-  //   description: String,
-  //   available: {
-  //     type: Boolean,
-  //     default: true
-  //   } */}
-
+       
         <Row>
           {listings.map((post, idx) => (
             <Col lg="6" sm="12" className="mb-4" key={idx}>
@@ -161,33 +141,6 @@ class Listings extends React.Component {
         </Col>
       ))}
     </Row> */}
-
-        {/* <Row> */}
-        {/* Users Overview */}
-        {/* <Col lg="8" md="12" sm="12" className="mb-4">
-        <UsersOverview />
-      </Col> */}
-
-        {/* Users by Device */}
-        {/* <Col lg="4" md="6" sm="12" className="mb-4">
-        <UsersByDevice />
-      </Col> */}
-
-        {/* New Draft */}
-        {/* <Col lg="4" md="6" sm="12" className="mb-4">
-        <NewDraft />
-      </Col> */}
-
-        {/* Discussions */}
-        {/* <Col lg="5" md="12" sm="12" className="mb-4">
-        <Discussions />
-      </Col> */}
-
-        {/* Top Referrals */}
-        {/* <Col lg="3" md="12" sm="12" className="mb-4">
-        <TopReferrals />
-      </Col> */}
-        {/* </Row> */}
       </Container>
     );
   }
@@ -300,8 +253,8 @@ Listings.defaultProps = {
 
 const mapStateToProps = state => ({
   listings: state.listingReducer.listings,
-  isAuth: state.authReducer.isAuth,
-  user: state.userReducer.user
+  isAuth: state.authReducer.isAuth
+  // user: state.userReducer.user
 });
 
 const mapDispatchToProps = dispatch => ({

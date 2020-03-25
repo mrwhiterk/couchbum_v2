@@ -59,7 +59,7 @@ class Travelers extends React.Component {
                   
                 </a> */}
                 {['chess','piano','wood work'].map(item => {
-                  return <div>{item}</div>
+                  return <div key={item}>{item}</div>
                 })}
                 
               </span>

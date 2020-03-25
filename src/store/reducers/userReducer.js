@@ -8,6 +8,9 @@ export default function(state = initialState, action) {
       return { ...state, travelers: action.payload };
     case actionTypes.GETUSER:
       return { ...state, user: action.payload };
+    case actionTypes.REMOVEUSER:
+        console.log('hit')
+      return { ...state, user: null}
     default:
       return state;
   }

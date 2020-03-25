@@ -16,10 +16,11 @@ export const GetTravelers = data => {
   };
 };
 
-export const GetUser = data => {
+export const GetUser = id => {
   return async dispatch => {
     try {
-      let response = await getUser();
+      let response = await getUser(id);
+      console.log(response.data);
 
       dispatch({
         type: actionTypes.GETUSER,
@@ -28,5 +29,11 @@ export const GetUser = data => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+export const RemoveUser = () => {
+  return {
+    type: actionTypes.REMOVEUSER
   };
 };

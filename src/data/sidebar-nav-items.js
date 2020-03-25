@@ -39,11 +39,11 @@ export default function() {
       to: "/add-new-listing"
     },
     
-    {
-      title: "Forms & Components",
-      htmlBefore: '<i class="material-icons">view_module</i>',
-      to: "/components-overview"
-    },
+    // {
+    //   title: "Forms & Components",
+    //   htmlBefore: '<i class="material-icons">view_module</i>',
+    //   to: "/components-overview"
+    // },
     // {
     //   title: "Tables",
     //   htmlBefore: '<i class="material-icons">table_chart</i>',

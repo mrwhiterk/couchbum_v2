@@ -15,10 +15,12 @@ export const checkTokenAndReturn = () => {
 
   const tokenData = jwt_decode(token);
   const currentTime = Date.now() / 1000;
+
   if (tokenData.exp < currentTime) {
     localStorage.removeItem("token");
     setAuthHeader(null);
     return null;
+
   } else {
     if (token) setAuthHeader(token);
     else console.log("token error: ", token);
@@ -71,9 +73,9 @@ export const getTravelers = async () => {
   }
 };
 
-export const getUser = async () => {
+export const getUser = async (id) => {
   try {
-    let res = await Axios.get("/api/users/getUser");
+    let res = await Axios.get(`/api/users/getUser/${id}`);
     return res;
   } catch (error) {
     return error.response;

@@ -1,17 +1,17 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 // import { Container, Row, Col } from "shards-react";
 
 import PageTitle from "./../components/common/PageTitle";
-import SmallStats from "./../components/common/SmallStats";
-import UsersOverview from "./../components/blog/UsersOverview";
-import UsersByDevice from "./../components/blog/UsersByDevice";
-import NewDraft from "./../components/blog/NewDraft";
-import Discussions from "./../components/blog/Discussions";
-import TopReferrals from "./../components/common/TopReferrals";
-import Checkboxes from "../components/components-overview/Checkboxes";
+// import SmallStats from "./../components/common/SmallStats";
+// import UsersOverview from "./../components/blog/UsersOverview";
+// import UsersByDevice from "./../components/blog/UsersByDevice";
+// import NewDraft from "./../components/blog/NewDraft";
+// import Discussions from "./../components/blog/Discussions";
+// import TopReferrals from "./../components/common/TopReferrals";
+// import Checkboxes from "../components/components-overview/Checkboxes";
 import { connect } from "react-redux";
-import { checkTokenAndReturn } from "../axios";
+// import { checkTokenAndReturn } from "../axios";
 import * as actions from "../store/actions";
 import { Redirect } from "react-router-dom";
 
@@ -19,12 +19,9 @@ import {
   Row,
   Col,
   Form,
-  FormGroup,
-  FormFeedback,
   Button,
   Container,
   FormInput,
-  FormSelect
 } from "shards-react";
 
 class Register extends React.Component {
