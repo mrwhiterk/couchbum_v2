@@ -12,6 +12,10 @@ export default function(state = initialState, action) {
       return { ...state, user: null}
     case actionTypes.UPDATEUSER:
       return { ...state, user: action.payload};
+    case actionTypes.ADDSKILL:
+      return { ...state, user: action.payload};
+    case actionTypes.REMOVESKILL:
+      return { ...state, user: action.payload};
     default:
       return state;
   }

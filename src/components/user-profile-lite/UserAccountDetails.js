@@ -63,7 +63,7 @@ class UserAccountDetails extends React.Component {
   };
 
   render() {
-    console.log(this.props.user);
+    // console.log(this.props.user);
     let display = <h1>...Loading</h1>;
     let { user } = this.props;
     if (this.props.user) {

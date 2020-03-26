@@ -90,4 +90,22 @@ export const updateUser = async (id, data) => {
   }
 }; 
 
+export const addSkill = async (id, data) => {
+  try {
+    let res = await Axios.put(`/api/users/addSkill/${id}`, {data})
+    return res;
+  } catch (error) {
+    return error.response;
+  }
+}
+
+export const removeSkill = async (id, data) => {
+  try {
+    let res = await Axios.put(`/api/users/removeSkill/${id}`, {data})
+    return res;
+  } catch (error) {
+    return error.response;
+  }
+}
+
 

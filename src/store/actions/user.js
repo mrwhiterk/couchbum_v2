@@ -1,5 +1,5 @@
 import * as actionTypes from "../actionTypes";
-import { getTravelers, getUser, updateUser } from "../../axios";
+import { getTravelers, getUser, updateUser, addSkill, removeSkill } from "../../axios";
 
 export const GetTravelers = data => {
   return async dispatch => {
@@ -47,6 +47,37 @@ export const UpdateUser = (id, data) => {
     }
   };
 };
+
+export const AddSkill = (id, data) => {
+    return async dispatch => {
+        try {
+            let response = await addSkill(id, data)
+   
+
+            dispatch({
+                type: actionTypes.ADDSKILL,
+                payload: response.data
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}
+
+export const RemoveSkill = (id, data) => {
+    return async dispatch => {
+        try {
+            let response = await removeSkill(id, data);
+       
+            dispatch({
+                type: actionTypes.REMOVESKILL,
+                payload: response.data
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}
 
 export const RemoveUser = () => {
   return {

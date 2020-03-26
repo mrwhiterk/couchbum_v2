@@ -57,7 +57,7 @@ class UserActions extends React.Component {
     let { isAuth } = this.props;
 
     if (isAuth) {
-      console.log(this.props);
+      // console.log(this.props);
       display = (
         <NavItem tag={Dropdown} caret toggle={this.toggleUserActions}>
           <DropdownToggle caret tag={NavLink} className="text-nowrap px-3">
@@ -77,10 +77,10 @@ class UserActions extends React.Component {
           </DropdownToggle>
 
           <Collapse tag={DropdownMenu} right small open={this.state.visible}>
-            <DropdownItem tag={Link} to="user-profile">
+            <DropdownItem tag={Link} to="user-profile-lite">
               <i className="material-icons">&#xE7FD;</i> Profile
             </DropdownItem>
-            <DropdownItem tag={Link} to="edit-user-profile">
+            <DropdownItem tag={Link} to="user-profile-lite">
               <i className="material-icons">&#xE8B8;</i> Edit Profile
             </DropdownItem>
             <DropdownItem tag={Link} to="file-manager-list">

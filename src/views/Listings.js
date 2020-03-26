@@ -99,9 +99,10 @@ class Listings extends React.Component {
                   </h5>
                   <div className="card-text d-inline-block mb-3">
                     <div className="mb-3">
-                      {post.description.length > 30
+                      {/* {post.description.length > 30
                         ? post.description.slice(0, 30) + "..."
-                        : post.description}
+                        : post.description} */}
+                        {post.description}
                     </div>
                     <div>
                       {post.available ? (

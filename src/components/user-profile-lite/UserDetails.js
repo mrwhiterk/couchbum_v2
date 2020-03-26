@@ -6,29 +6,41 @@ import {
   Button,
   ListGroup,
   ListGroupItem,
-  Progress
+  Progress,
+  Form,
+  FormGroup,
+  InputGroup,
+  FormInput
 } from "shards-react";
-import './UserDetails.css';
+import "./UserDetails.css";
 import Moment from "react-moment";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 
 class UserDetails extends React.Component {
-  
   componentDidMount = async () => {
     try {
-
-      await this.props.getUser(this.props.isAuth._id)
-      
-
+      await this.props.getUser(this.props.isAuth._id);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
+
+  state = {
+    skill: ""
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.addSkill(this.props.isAuth._id, this.state.skill);
+    this.setState({ skill: "" });
+  };
+
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    let display = <div>...Loading</div>
-    console.log(this.props)
+    let display = <div>...Loading</div>;
+    console.log(this.props);
 
     if (this.props.user) {
       display = (
@@ -82,18 +94,42 @@ class UserDetails extends React.Component {
                 {/* {userDetails.metaTitle} */}
                 Skills
               </strong>
-              {this.props.user.skills && this.props.user.skills.map(item => {
-                return <div>{item}</div>;
-              })}
+              <Form onSubmit={this.handleSubmit}>
+                <FormGroup>
+                  <InputGroup className="mb-3">
+                    <FormInput
+                      placeholder="Skill"
+                      onChange={this.handleChange}
+                      value={this.state.skill}
+                      name="skill"
+                    />
+                  </InputGroup>
+                </FormGroup>
+              </Form>
+              {this.props.user.skills &&
+                this.props.user.skills.map((item) => {
+                  return (
+                    <div className="d-flex justify-content-between">
+                      {item}{" "}
+                      <Button
+                        outline
+                        onClick={() => this.props.removeSkill(
+                          this.props.isAuth._id,
+                          item
+                        )}
+                      >
+                        X
+                      </Button>
+                    </div>
+                  );
+                })}
             </ListGroupItem>
           </ListGroup>
         </Card>
       );
     }
-    
-    return (
-      <>{display}</>
-    );
+
+    return <>{display}</>;
   }
 }
 
@@ -123,39 +159,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getUser: (id) => dispatch(actions.userActions.GetUser(id))
+  getUser: id => dispatch(actions.userActions.GetUser(id)),
+  addSkill: (id, data) => dispatch(actions.userActions.AddSkill(id, data)),
+  removeSkill: (id, data) => dispatch(actions.userActions.RemoveSkill(id, data))
 });
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(UserDetails);
-
-// email: {
-//       type: String,
-//       required: true
-//     },
-//     username: {
-//       type: String,
-//       required: true
-//     },
-//     isHost: {
-//       type: Boolean,
-//       default: false
-//     },
-//     isTraveler: {
-//       type: Boolean,
-//       default: false
-//     },
-//     skills: [
-//       {
-//         type: String
-//       }
-//     ],
-//     listings: [
-//       {
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: "Listing"
-//       }
-//     ],
-//     avatar: String,
-//     bio: { type: String }
-//   },

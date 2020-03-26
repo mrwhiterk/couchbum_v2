@@ -1,6 +1,12 @@
 export default function() {
   return [
     {
+      title: "About",
+      to: "/about",
+      htmlBefore: '<i class="material-icons">vertical_split</i>',
+      htmlAfter: ""
+    },
+    {
       title: "Register",
       to: "/register",
       htmlBefore: '<i class="material-icons">add</i>',

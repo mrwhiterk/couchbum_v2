@@ -49,6 +49,7 @@ class Travelers extends React.Component {
                 </a>
               </h5>
               <p className="card-text">{post.bio || 'Looking for an adventure'}</p>
+              <p className="card-text">{post.email}</p>
             </CardBody>
             <CardFooter className="text-muted border-top py-3" id="min-height">
               <span className="d-inline-block">

@@ -6,6 +6,7 @@ import { DefaultLayout } from "./layouts";
 
 // Route Views
 import Listings from "./views/Listings";
+import About from './views/About'
 
 import Register from "./views/Register";
 import Login from "./views/Login";
@@ -27,10 +28,16 @@ export default [
     component: () => <Redirect to="/listings" />
   },
   {
+    path: "/about",
+    layout: DefaultLayout,
+    component: About
+  },
+  {
     path: "/listings",
     layout: DefaultLayout,
     component: Listings
   },
+
   {
     path: "/register",
     layout: DefaultLayout,
