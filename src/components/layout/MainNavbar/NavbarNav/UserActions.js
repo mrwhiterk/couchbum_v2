@@ -25,17 +25,13 @@ class UserActions extends React.Component {
     this.toggleUserActions = this.toggleUserActions.bind(this);
   }
 
-  componentDidMount() {
-    console.log("User actions component did mount");
-    console.log("this props is Auth ", this.props.isAuth);
-    if (this.props.isAuth) {
-      try {
-        this.props.getUser(this.props.isAuth._id);
-      } catch (error) {
-        console.log(error);
-      }
+  componentDidMount = async () => {
+    try {
+      this.props.getUser(this.props.isAuth._id);
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
   logout = () => {
     localStorage.removeItem("token");
@@ -59,22 +55,24 @@ class UserActions extends React.Component {
     );
 
     let { isAuth } = this.props;
-    console.log(this.props.isAuth);
 
     if (isAuth) {
+      console.log(this.props);
       display = (
         <NavItem tag={Dropdown} caret toggle={this.toggleUserActions}>
           <DropdownToggle caret tag={NavLink} className="text-nowrap px-3">
-            <div id="circle">
-              <img
-                className="user-avatar rounded-circle mr-2"
-                src={
-                  this.props.isAuth.avatar ||
-                  require("./../../../../images/avatars/guest_user.png")
-                }
-                alt="User Avatar"
-              />{" "}
-            </div>
+            {/* <div id="circle"> */}
+            {console.log('dog ', this.props.user)}
+            <img
+              className="user-avatar rounded-circle mr-2"
+              src={
+                this.props.user && this.props.user.avatar
+                  ? this.props.user.avatar
+                  : require("./../../../../images/avatars/guest_user.png")
+              }
+              alt="User Avatar"
+            />{" "}
+            {/* </div> */}
             <span className="d-none d-md-inline-block">{isAuth.username}</span>
           </DropdownToggle>
 
@@ -109,8 +107,8 @@ class UserActions extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isAuth: state.authReducer.isAuth
-  // user: state.userReducer.user,
+  isAuth: state.authReducer.isAuth,
+  user: state.userReducer.user
 });
 
 const mapDispatchToProps = dispatch => ({

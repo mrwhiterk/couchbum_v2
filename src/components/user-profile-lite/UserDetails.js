@@ -17,7 +17,7 @@ class UserDetails extends React.Component {
   
   componentDidMount = async () => {
     try {
-      console.log(this.props.isAuth);
+
       await this.props.getUser(this.props.isAuth._id)
       
 
@@ -28,6 +28,7 @@ class UserDetails extends React.Component {
 
   render() {
     let display = <div>...Loading</div>
+    console.log(this.props)
 
     if (this.props.user) {
       display = (
@@ -36,9 +37,9 @@ class UserDetails extends React.Component {
             <div className="mb-3 mx-auto">
               <img
                 className="rounded-circle"
-                id="profile-picture"
+                // id="profile-picture"
                 src={
-                  this.props.isAuth.avatar ||
+                  this.props.user.avatar ||
                   require("../../images/avatars/guest_user.png")
                 }
                 alt={this.props.isAuth.avatar}
@@ -81,7 +82,7 @@ class UserDetails extends React.Component {
                 {/* {userDetails.metaTitle} */}
                 Skills
               </strong>
-              {this.props.user.skills.map(item => {
+              {this.props.user.skills && this.props.user.skills.map(item => {
                 return <div>{item}</div>;
               })}
             </ListGroupItem>

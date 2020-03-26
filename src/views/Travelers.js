@@ -15,6 +15,7 @@ import Moment from "react-moment";
 import { connect } from "react-redux";
 import { checkTokenAndReturn } from "../axios";
 import * as actions from "../store/actions";
+import './Travelers.css';
 
 import PageTitle from "../components/common/PageTitle";
 
@@ -49,7 +50,7 @@ class Travelers extends React.Component {
               </h5>
               <p className="card-text">{post.bio || 'Looking for an adventure'}</p>
             </CardBody>
-            <CardFooter className="text-muted border-top py-3">
+            <CardFooter className="text-muted border-top py-3" id="min-height">
               <span className="d-inline-block">
                 <a className="text-fiord-blue" href={post.authorUrl}>
                   Skills
@@ -58,7 +59,7 @@ class Travelers extends React.Component {
                 {/* <a className="text-fiord-blue" href={post.categoryUrl}>
                   
                 </a> */}
-                {['chess','piano','wood work'].map(item => {
+                {post.skills && post.skills.map(item => {
                   return <div key={item}>{item}</div>
                 })}
                 

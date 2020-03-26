@@ -1,5 +1,5 @@
 import * as actionTypes from "../actionTypes";
-import { getTravelers, getUser } from "../../axios";
+import { getTravelers, getUser, updateUser } from "../../axios";
 
 export const GetTravelers = data => {
   return async dispatch => {
@@ -24,6 +24,22 @@ export const GetUser = id => {
 
       dispatch({
         type: actionTypes.GETUSER,
+        payload: response.data
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const UpdateUser = (id, data) => {
+  return async dispatch => {
+    try {
+      let response = await updateUser(id, data);
+      console.log(response.data);
+
+      dispatch({
+        type: actionTypes.UPDATEUSER,
         payload: response.data
       });
     } catch (error) {

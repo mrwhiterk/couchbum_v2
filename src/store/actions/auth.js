@@ -21,7 +21,10 @@ export const Login = data => {
   return async dispatch => {
     try {
       let response = await login(data);
-      localStorage.setItem("token", response.data.token);
+       localStorage.removeItem('token')
+      if (response.status == 200) {
+        localStorage.setItem("token", response.data.token);
+      }
       dispatch({
         type: actionTypes.LOGIN,
         payload: response.data
@@ -35,5 +38,5 @@ export const Login = data => {
 export const Logout = data => {
   return {
     type: actionTypes.LOGOUT
-  }
+  };
 };

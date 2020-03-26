@@ -38,7 +38,7 @@ class AddNewListing extends React.Component {
     }
 
     try {
-      await this.props.createListing(data);
+      await this.props.createListing({...data, host: this.props.isAuth._id});
       this.setState({
         title: "",
         street: "",

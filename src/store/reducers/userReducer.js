@@ -9,8 +9,9 @@ export default function(state = initialState, action) {
     case actionTypes.GETUSER:
       return { ...state, user: action.payload };
     case actionTypes.REMOVEUSER:
-        console.log('hit')
       return { ...state, user: null}
+    case actionTypes.UPDATEUSER:
+      return { ...state, user: action.payload};
     default:
       return state;
   }

@@ -18,6 +18,7 @@ export const GetListings = data => {
 };
 
 export const CreateListing = data => {
+  console.log('21', data)
   
   return async dispatch => {
     try {

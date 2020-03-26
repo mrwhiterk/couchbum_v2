@@ -57,7 +57,7 @@ class Listings extends React.Component {
             className="text-sm-left mb-3"
           />
         </Row>
-       
+
         <Row>
           {listings.map((post, idx) => (
             <Col lg="6" sm="12" className="mb-4" key={idx}>
@@ -80,11 +80,14 @@ class Listings extends React.Component {
                       href="#"
                       className="card-post__author-avatar card-post__author-avatar--small"
                       style={{
-                        backgroundImage: `url('${post.host.avatar ||
-                          require("./../images/avatars/guest_user.png")}')`
+                        backgroundImage: `url('${
+                          post.host && post.host.avatar
+                            ? post.host.avatar
+                            : require("./../images/avatars/guest_user.png")
+                        }')`
                       }}
                     >
-                      Written by {post.host.username}
+                      Written by {post.host && post.host.username}
                     </a>
                   </div>
                 </div>
@@ -113,7 +116,7 @@ class Listings extends React.Component {
                     </div>
                   </div>
                   <br />
-                  <div>by {post.host.username}</div>
+                  <div>by {post.host && post.host.username}</div>
                   <span className="text-muted">
                     <Moment format="DD MMM YYYY" date={post.createdAt} />
                   </span>

@@ -1,15 +1,16 @@
 #circle {
   border-radius: 50%;
-  height: 30px;
-  width: 30px;
+  height: 45px;
+  width: 45px;
   overflow: hidden;
   position: relative;
+  border: 1px solid black;
   /* display: flex; */
   /* justify-content: center;
   align-items: center; */
 }
-
+/* 
 #profile-picture img {
   position: absolute;
   left: -20px;
-}
+} */

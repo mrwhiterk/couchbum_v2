@@ -23,7 +23,6 @@ export const checkTokenAndReturn = () => {
 
   } else {
     if (token) setAuthHeader(token);
-    else console.log("token error: ", token);
     return tokenData;
   }
 };
@@ -80,4 +79,15 @@ export const getUser = async (id) => {
   } catch (error) {
     return error.response;
   }
+};
+
+export const updateUser = async (id, data) => {
+  try {
+    let res = await Axios.put(`/api/users/${id}`, data);
+    return res;
+  } catch (error) {
+    return error.response;
+  }
 }; 
+
+

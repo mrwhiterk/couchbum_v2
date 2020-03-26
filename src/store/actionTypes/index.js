@@ -13,3 +13,4 @@ export const CREATELISTING = "CREATELISTING";
 export const GETTRAVELERS = "GETTRAVELERS";
 export const GETUSER = "GETUSER";
 export const REMOVEUSER = "REMOVEUSER";
+export const UPDATEUSER = 'UPDATEUSER';
